@@ -14,9 +14,10 @@ class League{
 
     public:
         League();
-        ~League();
+        // ~League();
 
         std::vector<Team*>&getTeams();
+        Schedule *get_sc();
         void addTeam(Team *t);
         void startLeague();
         void scoreboard(int num );

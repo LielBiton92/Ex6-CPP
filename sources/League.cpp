@@ -6,18 +6,18 @@ League::League()
 {
     this->sc = NULL;
 }
-League::~League()
-{
-    for (unsigned int i = 0; i < this->sc->get_games().size(); i++)
-    {
-        delete this->sc->get_games()[i];
-    }
-    delete this->sc;
-    for (unsigned int i = 0; i < this->getTeams().size(); i++)
-    {
-        delete this->getTeams()[i];
-    }
-}
+// League::~League()
+// {
+//     for (unsigned int i = 0; i < this->sc->get_games().size(); i++)
+//     {
+//         delete this->sc->get_games()[i];
+//     }
+//     delete this->sc;
+//     for (unsigned int i = 0; i < this->getTeams().size(); i++)
+//     {
+//         delete this->getTeams()[i];
+//     }
+// }
 
 Team *League::add_random_team()
 {
@@ -39,15 +39,18 @@ Team *League::add_random_team()
     return randomTeam;
 }
 
+Schedule* League::get_sc(){return this->sc;}
+
 std::vector<Team *> &League::getTeams() { return this->Teams; }
 
 void League::addTeam(Team *t)
 {
-    this->Teams.push_back(t);
     if (this->Teams.size() > NUM_OF_TEAMS)
     {
-        throw("max teams is 20");
+        std::runtime_error("max teams is 20");
     }
+        this->Teams.push_back(t);
+
 }
 
 void League::startLeague()
@@ -211,7 +214,7 @@ Team::Team(std::string &name, double talent)
     
     this->name = name;
     if(this->name.empty()){
-        throw ("name cannot be empty");
+        std::logic_error ("name cannot be empty");
     }
     this->LS = 0;
     this->WS = 0;
@@ -223,10 +226,10 @@ Team::Team(std::string &name, double talent)
     this->loss = 0;
     if (talent < 0)
     {
-        throw("talent cannot be positive");
+        std::logic_error("talent cannot be positive");
     }
     else if(talent > 1){
-        throw("talent cannot be greater then 1");
+        std::logic_error("talent cannot be greater then 1");
     }
     this->talent = talent;
 }

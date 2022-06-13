@@ -22,6 +22,9 @@
 //     // std::string name15 = "Barca15";
 //     // std::string name16 = "Barca16";
 //     // std::string name17 = "Barca17";
+//     // std::string name18 = "Barca18";
+//     // std::string name19 = "Barca19";
+//     // std::string name20 = "Barca20";
 
 //     // Team *t = new Team(name , 0.5);
 //     // Team *t1 = new Team(name2, 0.4);
@@ -40,11 +43,16 @@
 //     // Team *t14 = new Team(name15 , 0.5);
 //     // Team *t15 = new Team(name16, 0.4);
 //     // Team *t16 = new Team(name17 , 0.5);
+//     // Team *t17 = new Team(name18 , 0.5);
+//     // Team *t18 = new Team(name19 , 0.5);
+//     // Team *t19 = new Team(name20 , 0.5);
 
 //     // League *l = new League();
 //     League l{};
-//     // l->addTeam(t);
-//     // l->addTeam(t1);
+//     // std::string name  = "s";
+
+//     // l.addTeam(t);
+//     // l.addTeam(t1);
 //     // l->addTeam(t2);
 //     // l->addTeam(t3);
 //     // l->addTeam(t4);
@@ -60,12 +68,15 @@
 //     // l->addTeam(t14);
 //     // l->addTeam(t15);
 //     // l->addTeam(t16);
+//     // l->addTeam(t17);
+//     // l->addTeam(t18);
+//     // l->addTeam(t19);
 //     l.startLeague();
     
 //     // cout << "****************"<<endl;
-//     // l.scoreboard();
+//     l.scoreboard();
 
-//     l.statistic(20);
+//     // l->statistic(20);
 //     // free(l);
 //     // l.~League();
 //     // delete l;
