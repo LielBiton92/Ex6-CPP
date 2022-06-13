@@ -26,7 +26,7 @@ $(OBJECT_PATH)/%.o: $(SOURCE_PATH)/%.cpp $(HEADERS)
 	$(CXX) $(CXXFLAGS) --compile $< -o $@
 
 StudentTest1.cpp:  
-	curl https://raw.githubusercontent.com/LielBiton92/Ex6CPP/master/Test.cpp > $@
+	curl https://raw.githubusercontent.com/LielBiton92/Ex6-CPP/main/Test.cpp > $@
 
 
 tidy:
