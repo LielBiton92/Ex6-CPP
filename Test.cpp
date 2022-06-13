@@ -40,10 +40,10 @@ TEST_CASE("League"){
     L.startLeague();
     CHECK(L.getTeams().size()==20);
     for(unsigned int i = 0 ; i < L.get_sc()->get_games().size();i++){
-        CHECK(L.get_sc()->get_games()[i]->get_home_score()>50);
-        CHECK(L.get_sc()->get_games()[i]->get_out_score()>55);
-        CHECK(L.get_sc()->get_games()[i]->get_home_score()<100);
-        CHECK(L.get_sc()->get_games()[i]->get_out_score()<100);
+        CHECK(L.get_sc()->get_games()[i]->get_home_score()>=55);
+        CHECK(L.get_sc()->get_games()[i]->get_out_score()>=50);
+        CHECK(L.get_sc()->get_games()[i]->get_home_score()<=100);
+        CHECK(L.get_sc()->get_games()[i]->get_out_score()<=100);
     }
     
     

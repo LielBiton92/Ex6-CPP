@@ -14,7 +14,7 @@ class League{
 
     public:
         League();
-        // ~League();
+        ~League();
 
         std::vector<Team*>&getTeams();
         Schedule *get_sc();
@@ -78,15 +78,15 @@ class Game{
     private:
         Team *Home;
         Team *OutTeam;
-        int total_points_of_game;
-        int homeScore;
-        int outScore;
+        unsigned int total_points_of_game;
+        unsigned int homeScore;
+        unsigned int outScore;
         
 
     public:
         double get_home_score()const;
         double get_out_score()const;
-        int get_total_points_of_game()const;
+        unsigned int get_total_points_of_game()const;
 
 
         Game(Team *Home , Team *Out);

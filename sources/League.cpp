@@ -6,18 +6,18 @@ League::League()
 {
     this->sc = NULL;
 }
-// League::~League()
-// {
-//     for (unsigned int i = 0; i < this->sc->get_games().size(); i++)
-//     {
-//         delete this->sc->get_games()[i];
-//     }
-//     delete this->sc;
-//     for (unsigned int i = 0; i < this->getTeams().size(); i++)
-//     {
-//         delete this->getTeams()[i];
-//     }
-// }
+League::~League()
+{
+    for (unsigned int i = 0; i < this->sc->get_games().size(); i++)
+    {
+        delete this->sc->get_games()[i];
+    }
+    delete this->sc;
+    for (unsigned int i = 0; i < this->getTeams().size(); i++)
+    {
+        delete this->getTeams()[i];
+    }
+}
 
 Team *League::add_random_team()
 {
@@ -34,7 +34,7 @@ Team *League::add_random_team()
         }
         j++;
     }
-    double random_talent = ((double)rand() / (RAND_MAX)) + 1;
+    double random_talent = ((double)rand() / (RAND_MAX)) ;
     Team *randomTeam = new Team(to_add, random_talent);
     return randomTeam;
 }
@@ -47,7 +47,7 @@ void League::addTeam(Team *t)
 {
     if (this->Teams.size() > NUM_OF_TEAMS)
     {
-        std::runtime_error("max teams is 20");
+        throw std::runtime_error("max teams is 20");
     }
         this->Teams.push_back(t);
 
@@ -214,7 +214,7 @@ Team::Team(std::string &name, double talent)
     
     this->name = name;
     if(this->name.empty()){
-        std::logic_error ("name cannot be empty");
+        throw std::logic_error ("name cannot be empty");
     }
     this->LS = 0;
     this->WS = 0;
@@ -226,10 +226,10 @@ Team::Team(std::string &name, double talent)
     this->loss = 0;
     if (talent < 0)
     {
-        std::logic_error("talent cannot be positive");
+        throw std::logic_error("talent cannot be positive");
     }
-    else if(talent > 1){
-        std::logic_error("talent cannot be greater then 1");
+    if(talent > 1){
+        throw std::logic_error("talent cannot be greater then 1");
     }
     this->talent = talent;
 }
@@ -327,7 +327,7 @@ Game::Game(Team *Home, Team *Out)
 
 double Game::get_home_score() const { return this->homeScore; }
 double Game::get_out_score() const { return this->outScore; }
-int Game::get_total_points_of_game() const { return this->total_points_of_game; }
+unsigned int Game::get_total_points_of_game() const { return this->total_points_of_game; }
 
 void Game::ScoreGame()
 {
@@ -335,33 +335,33 @@ void Game::ScoreGame()
     std::mt19937 gen{rd()};
 
     std::normal_distribution<> Homed{EXP_HOME, VAR};
-    std::normal_distribution<> Outd{EXP_OUT, VAR};
+    std::normal_distribution<> Outd{EXP_HOME, VAR};
 
     while (homeScore < MIN_HOME_POINTS || homeScore > MAX_POINTS)
     {
-        this->homeScore = (int)std::round(Homed(gen));
+        this->homeScore = (unsigned int)std::round(Homed(gen));
     }
 
     while (outScore < MIN_OUT_POINTS || outScore > MAX_POINTS)
     {
-        this->outScore = (int)std::round(Outd(gen));
+        this->outScore = (unsigned int)std::round(Outd(gen));
     }
 
     // std::cout << this->OutTeam->get_talent()<<std::endl;
 
-    int homebonus = (int)(MULT_TALENT * this->Home->get_talent());
+    unsigned int homebonus = (unsigned int)(MULT_TALENT * this->Home->get_talent());
     this->homeScore += homebonus;
-    if (this->homeScore > 100)
+    if (this->homeScore > MAX_POINTS)
     {
-        this->homeScore = 100;
+        this->homeScore = MAX_POINTS;
     }
     // std::cout << "home : "<<homeScore <<std::endl;
 
-    int outbonus = (int)(MULT_TALENT * this->OutTeam->get_talent());
+    unsigned int outbonus = (unsigned int)(MULT_TALENT * this->OutTeam->get_talent());
     this->outScore += outbonus;
-    if (this->outScore > 100)
+    if (this->outScore > MAX_POINTS)
     {
-        this->outScore = 100;
+        this->outScore = MAX_POINTS;
     }
     // std::cout << "Out : "<<outScore<<std::endl;
 
