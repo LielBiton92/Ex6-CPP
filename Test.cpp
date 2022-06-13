@@ -18,7 +18,6 @@ TEST_CASE("Game"){
     }else{CHECK_EQ(Out->get_wins(),1);}
     CHECK_THROWS(Game *g2 = new Game(Home , Home));
 }
-
 TEST_CASE("Team"){
     std::string name="";
     std::string name2= "Barca";
@@ -33,6 +32,20 @@ TEST_CASE("Team"){
 }
 
 TEST_CASE("League"){
-
+    League L{};
+    std::string name = "Barca";
+    Team* team = new Team(name ,0.9 );
+    CHECK_NOTHROW(L.addTeam(team));
+    CHECK(L.getTeams().size()==1);
+    L.startLeague();
+    CHECK(L.getTeams().size()==20);
+    for(unsigned int i = 0 ; i < L.get_sc()->get_games().size();i++){
+        CHECK(L.get_sc()->get_games()[i]->get_home_score()>50);
+        CHECK(L.get_sc()->get_games()[i]->get_out_score()>55);
+        CHECK(L.get_sc()->get_games()[i]->get_home_score()<100);
+        CHECK(L.get_sc()->get_games()[i]->get_out_score()<100);
+    }
+    
+    
 }
 
