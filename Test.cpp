@@ -36,7 +36,7 @@ TEST_CASE("Team"){
 TEST_CASE("League"){
     League L{};
     std::string name = "Barca";
-    Team team{name , 0.8};
+    Team team(name , 0.8);
     CHECK_NOTHROW(L.addTeam(&team));
     CHECK(L.getTeams().size()==1);
     L.startLeague();
