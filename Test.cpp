@@ -17,6 +17,9 @@ TEST_CASE("Game"){
         CHECK_EQ(Home->get_wins(),1);
     }else{CHECK_EQ(Out->get_wins(),1);}
     CHECK_THROWS(Game *g2 = new Game(Home , Home));
+    delete Home;
+    delete Out;
+    delete g;
 }
 TEST_CASE("Team"){
     std::string name="";
@@ -24,18 +27,17 @@ TEST_CASE("Team"){
     CHECK_THROWS(Team *t = new Team(name,0.5));
     CHECK_THROWS(Team *t = new Team(name2,-1));
     CHECK_THROWS(Team *t = new Team(name2,2));
-    CHECK_NOTHROW(Team *t2 = new Team(name2 , 0.6));
-    Team *t3 = new Team(name2 , 0.8);
-    t3->increasewin();
-    CHECK_EQ(t3->get_wins(),1);
+    Team t3{name2 , 0.8};
+    t3.increasewin();
+    CHECK_EQ(t3.get_wins(),1);
 
 }
 
 TEST_CASE("League"){
     League L{};
     std::string name = "Barca";
-    Team* team = new Team(name ,0.9 );
-    CHECK_NOTHROW(L.addTeam(team));
+    Team team{name , 0.8};
+    CHECK_NOTHROW(L.addTeam(&team));
     CHECK(L.getTeams().size()==1);
     L.startLeague();
     CHECK(L.getTeams().size()==20);
@@ -44,8 +46,5 @@ TEST_CASE("League"){
         CHECK(L.get_sc()->get_games()[i]->get_out_score()>=50);
         CHECK(L.get_sc()->get_games()[i]->get_home_score()<=100);
         CHECK(L.get_sc()->get_games()[i]->get_out_score()<=100);
-    }
-    
-    
+    }    
 }
-
