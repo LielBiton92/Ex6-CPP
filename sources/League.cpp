@@ -6,13 +6,59 @@ League::League()
 {
     this->sc = NULL;
 }
+
+// League::League(const League &L){
+//     this->Teams = L.Teams;
+//     this->sc = L.sc;
+// }
+
+// League::League(League && Other)noexcept{
+//     Teams = Other.Teams;
+//     sc = Other.sc;
+//     if(Other.sc != NULL){
+//         for (unsigned int i = 0; i < Other.sc->get_games().size(); i++)
+//         {
+//             delete Other.sc->get_games()[i];
+//         }
+//         delete Other.sc;
+//         }
+//         for (unsigned int i = 0; i < Other.getTeams().size(); i++)
+//         {
+//             delete Other.getTeams()[i];
+//         }
+
+// }
+
+// League& League::operator=(League && Other)noexcept{
+//     if (this != &Other)
+// {
+//     Teams = Other.Teams;
+//     sc = Other.sc;
+
+//         if(sc != NULL){
+//     for (unsigned int i = 0; i < this->sc->get_games().size(); i++)
+//     {
+//         delete this->sc->get_games()[i];
+//     }
+//     delete this->sc;
+//     }
+//     for (unsigned int i = 0; i < this->getTeams().size(); i++)
+//     {
+//         delete this->getTeams()[i];
+//     }
+// }
+// return *this;
+// }
+
 League::~League()
 {
+    // if(sc != NULL){
     for (unsigned int i = 0; i < this->sc->get_games().size(); i++)
     {
         delete this->sc->get_games()[i];
     }
     delete this->sc;
+    // }
     for (unsigned int i = 0; i < this->getTeams().size(); i++)
     {
         delete this->getTeams()[i];

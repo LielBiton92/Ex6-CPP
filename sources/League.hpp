@@ -14,7 +14,12 @@ class League{
 
     public:
         League();
+        // League(const League &L);
+        // League& operator=(const League &L);
+        // League& operator=(League && Other)noexcept; 
+        // League(League && Other)noexcept;
         ~League();
+
 
         std::vector<Team*>&getTeams();
         Schedule *get_sc();

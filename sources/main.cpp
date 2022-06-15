@@ -5,7 +5,7 @@
 // int main(int argc, char const *argv[])
 // {
 
-//     // std::string name = "Barca";
+//     std::string name = "666Barca";
 //     // std::string name2 = "Barca2";
 //     // std::string name3 = "Barca3";
 //     // std::string name4 = "Barca4";
@@ -26,7 +26,7 @@
 //     // std::string name19 = "Barca19";
 //     // std::string name20 = "Barca20";
 
-//     // Team *t = new Team(name , 0.5);
+//     Team *t = new Team(name , 0.5);
 //     // Team *t1 = new Team(name2, 0.4);
 //     // Team *t2 = new Team(name3 , 0.5);
 //     // Team *t3 = new Team(name4, 0.4);
@@ -49,9 +49,13 @@
 
 //     // League *l = new League();
 //     League l{};
+
+
 //     // std::string name  = "s";
 
-//     // l.addTeam(t);
+//     l.addTeam(t);
+
+//     l.startLeague();
 //     // l.addTeam(t1);
 //     // l->addTeam(t2);
 //     // l->addTeam(t3);
@@ -71,7 +75,7 @@
 //     // l->addTeam(t17);
 //     // l->addTeam(t18);
 //     // l->addTeam(t19);
-//     l.startLeague();
+//     // l.startLeague();
     
 //     // cout << "****************"<<endl;
 //     l.scoreboard();
@@ -86,7 +90,7 @@
 //     // Schedule *sc = new Schedule(l->getTeams());
 
     
-    
+        
 
     
 
