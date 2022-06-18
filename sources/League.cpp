@@ -7,10 +7,10 @@ League::League()
     this->sc = NULL;
 }
 
-// League::League(const League &L){
-//     this->Teams = L.Teams;
-//     this->sc = L.sc;
-// }
+League::League(const League &L){
+    this->Teams = L.Teams;
+    this->sc = L.sc;
+}
 
 // League::League(League && Other)noexcept{
 //     Teams = Other.Teams;
